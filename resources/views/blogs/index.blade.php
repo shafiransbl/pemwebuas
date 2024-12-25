@@ -16,9 +16,11 @@
         <input type="text" name="search" placeholder="Search blogs..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
-
-    <a href="{{ route('blogs.create') }}" class="btn btn-primary mb-3">Create New Blog</a>
-    
+    @auth
+        @if (auth()->user()->role === 'admin')
+            <a href="{{ route('blogs.create') }}" class="btn btn-primary mb-3">Create New Blog</a>
+        @endif
+    @endauth
     @if($blogs->isEmpty())
         <p>No blogs found.</p>
     @else
@@ -27,12 +29,17 @@
                 <li>
                     <h2><a href="{{ route('blogs.show', $blog) }}">{{ $blog->title }}</a></h2>
                     <p>{{ Str::limit($blog->content, 100) }}</p>
-                    <a href="{{ route('blogs.edit', $blog) }}" class="btn btn-warning">Edit</a>
-                    <form action="{{ route('blogs.destroy', $blog) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+
+                    @auth
+                        @if (auth()->user()->role === 'admin')
+                            <a href="{{ route('blogs.edit', $blog) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('blogs.destroy', $blog) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        @endif
+                    @endauth
                 </li>
             @endforeach
         </ul>

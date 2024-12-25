@@ -7,6 +7,11 @@ use App\Models\Blog;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        // Pastikan hanya admin yang bisa mengakses create, edit, dan destroy
+        // $this->middleware(middleware: middleware: 'admin')->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
     public function index(Request $request) {
         $query = Blog::query();
         if ($request->has('search')) {
