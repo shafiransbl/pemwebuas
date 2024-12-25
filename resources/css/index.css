@@ -1,0 +1,212 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Section */
+.judul {
+    width: 100%; 
+    height: 40vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    background-image: url('../img/maxresdefault.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: white; 
+}
+
+.judul h1 {
+    font-weight: bolder;
+    color: white;
+    font-family: sans-serif;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-transform: uppercase;
+    -webkit-text-stroke: 1px black;
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 700px; /* Perpanjangan lebar kontainer */
+    border: 2px solid #ccc;
+    border-radius: 30px; /* Border radius yang halus */
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-container:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+from input {
+    flex: 1; /* Memperpanjang input */
+    padding: 15px 20px;
+    border: none;
+    font-size: 16px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px; /* Untuk menyelaraskan dengan kontainer */
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+from input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+from input:focus {
+    background-color: #f9f9f9; /* Warna saat fokus */
+}
+
+from button {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px; /* Menyelaraskan dengan kontainer */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+from button:hover {
+    background-color: #0056b3;
+}
+
+from button:active {
+    background-color: #004494;
+}
+
+input{
+    width: 300px;
+    height: 35px;
+    border-radius: 8px;
+}
+
+
+/* Optional: Icon Styling */
+from button i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+
+/* Blog List */
+.isi {
+    padding: 20px;
+    width: 100%;
+    background-color: bisque;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+li h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+li h2 a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+}
+
+li h2 a:hover {
+    color: #007bff;
+}
+
+li p {
+    margin-bottom: 16px;
+    color: #555;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    .search-container {
+        max-width: 100%; /* Menyesuaikan dengan layar lebih kecil */
+    }
+
+    .search-button {
+        font-size: 14px; /* Menyesuaikan ukuran teks */
+    }
+}
