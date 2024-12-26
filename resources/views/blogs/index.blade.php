@@ -5,10 +5,14 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Blog')</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-    
-    @vite(['resources/css/index.css'])
+    @auth
+        @if (auth()->user()->role === 'admin')
+            @vite(['resources/css/indexadmin.css'])
+        @else
+            @vite(['resources/css/index.css'])
+        @endif
+    @endauth    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> 
 </head>
 <body>
 <div class="container">
@@ -33,32 +37,31 @@
             @endif
         @endauth
     </div>
+        <div class="isi">
+            @if($blogs->isEmpty())
+                <p>No blogs found.</p>
+            @else
+                <ul>
+                    @foreach($blogs as $blog)
+                        <li>
+                            <h2><a href="{{ route('blogs.show', $blog) }}">{{ $blog->title }}</a></h2>
+                            <p>{{ Str::limit($blog->content, 100) }}</p>
 
-    <div class="isi">
-        @if($blogs->isEmpty())
-            <p>No blogs found.</p>
-        @else
-            <ul>
-                @foreach($blogs as $blog)
-                    <li>
-                        <h2><a href="{{ route('blogs.show', $blog) }}">{{ $blog->title }}</a></h2>
-                        <p>{{ Str::limit($blog->content, 100) }}</p>
-
-                        @auth
-                            @if (auth()->user()->role === 'admin')
-                                <a href="{{ route('blogs.edit', $blog) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('blogs.destroy', $blog) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            @endif
-                        @endauth
-                    </li>
-                @endforeach
-            </ul>
-        @endif
-    </div>
+                            @auth
+                                @if (auth()->user()->role === 'admin')
+                                    <a href="{{ route('blogs.edit', $blog) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('blogs.destroy', $blog) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                @endif
+                            @endauth
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>  
 </div>
 </body>
 @endsection

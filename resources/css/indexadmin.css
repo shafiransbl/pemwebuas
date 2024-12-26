@@ -1,25 +1,18 @@
-/* Global Styles */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
     color: #333;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
+/* Header Section */
 .judul {
     width: 100%; 
     height: 40vh; 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 0 auto;
     flex-direction: column;
     text-align: center;
     background-image: url('../img/maxresdefault.jpg'); 
@@ -117,121 +110,103 @@ from button i {
     margin-right: 5px;
 }
 
-/* Blog Section */
 
-.isi ul {
+/* Blog List */
+.isi {
+    padding: 20px;
+    width: 100%;
+    background-color: bisque;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     list-style: none;
     padding: 0;
 }
 
-.isi li {
-    background-color: #fff;
+li {
     border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.isi li h2 {
-    margin-top: 0;
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+li h2 {
     font-size: 1.5rem;
-    color: #007BFF;
+    margin-bottom: 10px;
 }
 
-.isi li p {
-    font-size: 1rem;
-    color: #555;
-    margin: 10px 0;
-}
-
-.isi li a {
+li h2 a {
     text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease-in-out;
 }
 
-.isi li a:hover {
-    text-decoration: underline;
+li h2 a:hover {
+    color: #007bff;
 }
 
-/* Highlight Blog */
-.first-blog {
-    background-color: #f8f9fa;
-    border: 2px solid #007BFF;
-}
-
-.first-blog h2 {
-    color: #0056b3;
+li p {
+    margin-bottom: 16px;
+    color: #555;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
+    margin: 5px 0;
     padding: 8px 12px;
-    color: #fff;
-    text-decoration: none;
+    font-size: 14px;
     border-radius: 5px;
-    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
 }
 
 .btn-warning {
     background-color: #ffc107;
-    color: #212529;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
+    color: white;
+    border: none;
 }
 
 .btn-danger {
     background-color: #dc3545;
+    color: white;
+    border: none;
 }
 
-.btn-danger:hover {
-    background-color: #c82333;
+.btn:hover {
+    opacity: 0.9;
 }
 
-/*
-#kabar
-.kabar{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    background-color: blue;
-}
 
-.kabar-baru{
-    background-color: red;
-    display: block;
-}
-
-.kabar-baru li{
-    width: 100%;
-    height: 100%;
-}
-
-.kabar-selanjutnya{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-}
-*/
-
-/* Responsiveness */
+/* Responsivitas */
 @media (max-width: 768px) {
-    .judul input[type="text"] {
-        width: 80%;
+    .search-container {
+        max-width: 100%; /* Menyesuaikan dengan layar lebih kecil */
     }
 
-    .isi li {
-        padding: 10px;
-    }
-
-    .judul h1 {
-        font-size: 2rem;
+    .search-button {
+        font-size: 14px; /* Menyesuaikan ukuran teks */
     }
 }
